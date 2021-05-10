@@ -1,0 +1,45 @@
+{
+	"data": [
+		{
+			"id": "1",
+			"name": "Cake 1",
+			"description": "Cake Description",
+			"image": "cake.jpg",
+			"rating": 5
+		},
+		{
+			"id": "2",
+			"name": "Cake 2",
+			"description": "Cake Description",
+			"image": "cake.jpg",
+			"rating": 3
+		},
+		{
+			"id": "3",
+			"name": "Cake 3",
+			"description": "Cake Description",
+			"image": "cake.jpg",
+			"rating": 5
+		},
+		{
+			"id": "4",
+			"name": "Cake 4",
+			"description": "Cake Description",
+			"image": "cake.jpg",
+			"rating": 4
+		},
+		{
+			"id": "5",
+			"name": "Cake 5",
+			"description": "Cake Description",
+			"image": "cake.jpg",
+			"rating": 3
+		},
+		{
+			"id": "6",
+			"name": "Cake 6",
+			"description": "Cake Description",
+			"image": "cake.jpg",
+			"rating": 5
+		}]
+}
