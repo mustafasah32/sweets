@@ -1,8 +1,21 @@
 <div class="cakes">
   <p-dataView [value]="cakes" [paginator]="true" [rows]="6">
     <ng-template let-cake pTemplate="listItem">
-      <app-cake [cake]="cake"></app-cake>
+      <app-cake [cake]="cake" (displayCake)="showDialog(cake)"></app-cake>
     </ng-template>
     <ng-template let-cake pTemplate="gridItem"> </ng-template>
   </p-dataView>
 </div>
+
+<p-dialog
+  *ngIf="cakeToDisplay"
+  [header]="cakeToDisplay.name"
+  [(visible)]="showCake"
+  [modal]="true"
+  [style]="{ width: '300px' }"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+>
+  <app-show-cake [cake]="cakeToDisplay"></app-show-cake>
+</p-dialog>

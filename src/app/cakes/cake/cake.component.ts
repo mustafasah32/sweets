@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { ICake } from '../icake';
 
 @Component({
@@ -10,6 +11,9 @@ export class CakeComponent implements OnInit {
 
   @Input()
   cake!: ICake;
+
+  @Output()
+  displayCake=new EventEmitter();
 
   constructor() { }
 

@@ -18,10 +18,12 @@ import {RatingModule} from 'primeng/rating';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng/dropdown';
 import { RippleModule } from 'primeng/ripple';
+import { ShowCakeComponent } from './show-cake/show-cake.component';
 
 
 @NgModule({
   declarations: [
+    ShowCakeComponent,
     CakesComponent,
     CakeComponent
   ],

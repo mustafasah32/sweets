@@ -9,12 +9,20 @@ import { CakesService } from '../cakes-service/cakes.service';
 })
 export class CakesComponent implements OnInit {
 
-  cakes:ICake[]=[];
+  cakes: ICake[] = [];
 
-  constructor(private cakesService:CakesService) { }
+  showCake: boolean = false;
+  cakeToDisplay!: ICake;
+
+  constructor(private cakesService: CakesService) { }
 
   async ngOnInit(): Promise<void> {
-    this.cakes=await this.cakesService.getCakes();
+    this.cakes = await this.cakesService.getCakes();
+  }
+
+  showDialog(cake: ICake) {
+    this.cakeToDisplay = cake;
+    this.showCake = true;
   }
 
 }
