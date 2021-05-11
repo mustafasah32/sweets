@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ICake } from '../icake';
-import { CakesService } from '../cakes-service/cakes.service';
+import { CakesService } from '../cakes-service/cakes-http.service';
+import { CakesMenuService } from '../cakes-service/cakes-menu.service';
+import { EnterCakeComponent } from '../enter-cake/enter-cake.component';
+import { Cake } from '../cake';
 
 @Component({
   selector: 'app-cakes',
@@ -14,10 +17,35 @@ export class CakesComponent implements OnInit {
   showCake: boolean = false;
   cakeToDisplay!: ICake;
 
-  constructor(private cakesService: CakesService) { }
+  @ViewChild(EnterCakeComponent, { static: true })
+  insertCakeComponent!: EnterCakeComponent;
+
+  constructor(
+    private cakesService: CakesService,
+    private cakesMenuService: CakesMenuService) { }
 
   async ngOnInit(): Promise<void> {
+    this.cakesMenuService.showEnterCake$.subscribe(() => {
+      this.insertCakeComponent.showDialog();
+
+    })
     this.cakes = await this.cakesService.getCakes();
+  }
+
+  cakeEntered(cakeEntered: Cake) {
+    const cakesSaved = this.cakes;
+    const cake=new Cake();
+    cake.id=cakeEntered.id;
+    cake.description=cakeEntered.description;
+    cake.name=cakeEntered.name;
+    cake.image=cakeEntered.image;
+    cake.entered=true;
+    cake.rating=cakeEntered.rating;
+    cakesSaved.unshift(cake);
+    this.cakes = [];
+    setTimeout(() => {
+      this.cakes = cakesSaved;
+    }, 500)
   }
 
   showDialog(cake: ICake) {

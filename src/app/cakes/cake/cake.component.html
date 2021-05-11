@@ -1,11 +1,21 @@
-<div class="cake" (click)="displayCake.next()">
-  <div class="cake-top">
-  </div>
+<div
+  class="cake"
+  [ngClass]="{ inserted: cake.entered }"
+  (click)="displayCake.next()"
+>
+  <div class="cake-top"></div>
   <div class="cake-content">
-      <div class="cake-name">{{cake.name}}</div>
-      <div class="cake-description">{{cake.description}}</div>
-      <p-rating [ngModel]="cake.rating" [readonly]="true" [cancel]="false"></p-rating>
+    <div class="cake-name">{{ cake.name }}</div>
+    <div class="cake-description">{{ cake.description }}</div>
+    <p-rating
+      [ngModel]="cake.rating"
+      [readonly]="true"
+      [cancel]="false"
+    ></p-rating>
   </div>
-  <div class="cake-bottom">
-  </div>
+  <div class="cake-bottom"></div>
+  <br />
+  <span *ngIf="cake.entered"
+    ><i style="color: #7e2004">Recently entered</i></span
+  >
 </div>

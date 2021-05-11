@@ -1,11 +1,18 @@
 <div class="cakes">
-  <p-dataView [value]="cakes" [paginator]="true" [rows]="6">
+  <p-dataView
+    [value]="cakes"
+    [paginator]="true"
+    [rows]="6"
+    [loading]="cakes.length === 0"
+  >
     <ng-template let-cake pTemplate="listItem">
       <app-cake [cake]="cake" (displayCake)="showDialog(cake)"></app-cake>
     </ng-template>
     <ng-template let-cake pTemplate="gridItem"> </ng-template>
   </p-dataView>
 </div>
+
+<app-enter-cake (entered)="cakeEntered($event)"></app-enter-cake>
 
 <p-dialog
   *ngIf="cakeToDisplay"

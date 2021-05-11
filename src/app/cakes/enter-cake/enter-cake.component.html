@@ -1,0 +1,84 @@
+<div class="cake">
+  <p-dialog
+    header="Enter Your Cake"
+    [(visible)]="showEnterCake"
+    [modal]="true"
+    [style]="{ width: '300px' }"
+    [baseZIndex]="10000"
+    [draggable]="false"
+    [resizable]="false"
+  >
+    <form #enterCakeForm="ngForm">
+      <div class="p-field p-grid">
+        <label for="cake-name" class="p-col-fixed" style="width: 95%"
+          >Cake name</label
+        >
+        <div class="p-col">
+          <input
+            id="cake-name"
+            type="text"
+            pInputText
+            [(ngModel)]="cake.name"
+            name="name"
+            ngModel
+            #cakeName="ngModel"
+            required
+            style="width: 95%"
+            (change)="cakeNameInUse=false"
+          />
+          <small *ngIf="cakeName.dirty && cakeName.invalid" class="p-error"
+            >Cake name is not available.</small
+          >
+        </div>
+      </div>
+      <div class="p-field p-grid">
+        <label for="cake-name" class="p-col-fixed" style="width: 95%"
+          >Description</label
+        >
+        <div class="p-col">
+          <textarea
+            pInputTextarea
+            [(ngModel)]="cake.description"
+            #cakeDescription="ngModel"
+            name="description"
+            required
+            ngModel
+            style="width: 95%"
+          ></textarea>
+          <small
+            *ngIf="cakeDescription.dirty && cakeDescription.invalid"
+            class="p-error"
+            >Cake description is not available.</small
+          >
+        </div>
+      </div>
+
+      <br />
+      <p-rating
+        [(ngModel)]="cake.rating"
+        #cakeRating="ngModel"
+        name="rating"
+        ngModel
+        required
+      ></p-rating>
+
+      <br />
+      <div class="p-col">
+        <button
+          [disabled]="enterCakeForm.invalid"
+          (click)="enterCake()"
+          style="width: 95%"
+          pButton
+          type="button"
+          label="Click"
+          [loading]="loading"
+        ></button>
+      </div>
+      <small
+        *ngIf="cakeNameInUse"
+        class="p-error"
+        >This cake name is used.</small
+      >
+    </form>
+  </p-dialog>
+</div>

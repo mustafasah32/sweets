@@ -6,6 +6,7 @@ import { MenubarModule } from 'primeng/menubar';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CakesMenuService } from './cakes/cakes-service/cakes-menu.service';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { AppComponent } from './app.component';
     BrowserAnimationsModule,
     AppRoutingModule
   ],
-  providers: [],
+  providers: [
+    CakesMenuService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

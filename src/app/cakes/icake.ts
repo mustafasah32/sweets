@@ -4,4 +4,5 @@ export interface ICake {
   name: string,
   image: string,
   rating: number,
+  entered:boolean
 }

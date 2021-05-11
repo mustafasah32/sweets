@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CakesService } from './cakes.service';
+import { CakesService } from './cakes-http.service';
 
 describe('CakesService', () => {
   let service: CakesService;
