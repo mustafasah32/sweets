@@ -9,6 +9,9 @@
     [resizable]="false"
   >
     <form #enterCakeForm="ngForm">
+      <div>
+        <img [src]="cake.imageUrl" />
+      </div>
       <div class="p-field p-grid">
         <label for="cake-name" class="p-col-fixed" style="width: 95%"
           >Cake name</label
@@ -24,7 +27,7 @@
             #cakeName="ngModel"
             required
             style="width: 95%"
-            (change)="cakeNameInUse=false"
+            (change)="cakeNameInUse = false"
           />
           <small *ngIf="cakeName.dirty && cakeName.invalid" class="p-error"
             >Cake name is not available.</small
@@ -32,32 +35,32 @@
         </div>
       </div>
       <div class="p-field p-grid">
-        <label for="cake-name" class="p-col-fixed" style="width: 95%"
-          >Description</label
+        <label for="cake-comment" class="p-col-fixed" style="width: 95%"
+          >Comment</label
         >
         <div class="p-col">
           <textarea
             pInputTextarea
-            [(ngModel)]="cake.description"
-            #cakeDescription="ngModel"
-            name="description"
+            [(ngModel)]="cake.comment"
+            #cakeComment="ngModel"
+            name="comment"
             required
             ngModel
             style="width: 95%"
           ></textarea>
           <small
-            *ngIf="cakeDescription.dirty && cakeDescription.invalid"
+            *ngIf="cakeComment.dirty && cakeComment.invalid"
             class="p-error"
-            >Cake description is not available.</small
+            >Cake comment is not available.</small
           >
         </div>
       </div>
 
       <br />
       <p-rating
-        [(ngModel)]="cake.rating"
-        #cakeRating="ngModel"
-        name="rating"
+        [(ngModel)]="cake.yumFactor"
+        #cakeYumFactor="ngModel"
+        name="yumFactor"
         ngModel
         required
       ></p-rating>
@@ -74,9 +77,7 @@
           [loading]="loading"
         ></button>
       </div>
-      <small
-        *ngIf="cakeNameInUse"
-        class="p-error"
+      <small *ngIf="cakeNameInUse" class="p-error"
         >This cake name is used.</small
       >
     </form>

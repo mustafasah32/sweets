@@ -31,6 +31,7 @@ export class EnterCakeComponent implements OnInit {
 
   showDialog() {
     this.cakeNameInUse = false;
+    this.cake.imageUrl="cake.jpg";
     this.showEnterCake = true;
   }
 

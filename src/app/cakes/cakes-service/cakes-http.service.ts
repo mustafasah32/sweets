@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Cake } from '../cake';
 import { ICake } from '../icake';
@@ -12,7 +12,15 @@ export class CakesService implements ICakesService{
   constructor(private http: HttpClient) { }
 
   enterCake(cake: Cake): Promise<boolean> {
-    throw new Error('Method not implemented.');
+
+  const httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+    })
+  };
+    return this.http.post<boolean>('http://localhost:7071/api/enterCake',JSON.stringify(cake),httpOptions)
+    .toPromise()
+    .then(res => res);
   }
 
   getCakes():Promise<ICake[]> {

@@ -36,11 +36,11 @@ export class CakesComponent implements OnInit {
     const cakesSaved = this.cakes;
     const cake=new Cake();
     cake.id=cakeEntered.id;
-    cake.description=cakeEntered.description;
+    cake.comment=cakeEntered.comment;
     cake.name=cakeEntered.name;
-    cake.image=cakeEntered.image;
+    cake.imageUrl=cakeEntered.imageUrl;
     cake.entered=true;
-    cake.rating=cakeEntered.rating;
+    cake.yumFactor=cakeEntered.yumFactor;
     cakesSaved.unshift(cake);
     this.cakes = [];
     setTimeout(() => {

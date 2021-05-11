@@ -1,9 +1,10 @@
 <div class="cake" *ngIf="cake">
   <div class="cake-top">
+    <img [src]="cake.imageUrl">
   </div>
   <div class="cake-content">
-      <div class="cake-description">{{cake.description}}</div>
-      <p-rating [ngModel]="cake.rating" [readonly]="true" [cancel]="false"></p-rating>
+      <div class="cake-comment">{{cake.comment}}</div>
+      <p-rating [ngModel]="cake.yumFactor" [readonly]="true" [cancel]="false"></p-rating>
   </div>
   <div class="cake-bottom">
   </div>

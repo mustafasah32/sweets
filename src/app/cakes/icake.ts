@@ -1,8 +1,8 @@
 export interface ICake {
   id: string,
-  description: string,
+  comment: string,
   name: string,
-  image: string,
-  rating: number,
+  imageUrl: string,
+  yumFactor: number,
   entered:boolean
 }

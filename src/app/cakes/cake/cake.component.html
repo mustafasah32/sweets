@@ -3,12 +3,14 @@
   [ngClass]="{ inserted: cake.entered }"
   (click)="displayCake.next()"
 >
-  <div class="cake-top"></div>
+  <div class="cake-top">
+    <img [src]="cake.imageUrl" />
+  </div>
   <div class="cake-content">
     <div class="cake-name">{{ cake.name }}</div>
-    <div class="cake-description">{{ cake.description }}</div>
+    <div class="cake-comment">{{ cake.comment }}</div>
     <p-rating
-      [ngModel]="cake.rating"
+      [ngModel]="cake.yumFactor"
       [readonly]="true"
       [cancel]="false"
     ></p-rating>
