@@ -12,6 +12,10 @@
   </p-dataView>
 </div>
 
+<small *ngIf="httpError" class="p-error"
+  >Proxy error.</small
+>
+
 <app-enter-cake (entered)="cakeEntered($event)"></app-enter-cake>
 
 <p-dialog

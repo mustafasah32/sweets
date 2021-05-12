@@ -13,9 +13,9 @@ import { Cake } from '../cake';
 export class CakesComponent implements OnInit {
 
   cakes: ICake[] = [];
-
   showCake: boolean = false;
   cakeToDisplay!: ICake;
+  httpError:boolean=false;
 
   @ViewChild(EnterCakeComponent, { static: true })
   insertCakeComponent!: EnterCakeComponent;
@@ -29,7 +29,7 @@ export class CakesComponent implements OnInit {
       this.insertCakeComponent.showDialog();
 
     })
-    this.cakes = await this.cakesService.getCakes();
+    this.cakesService.getCakes().then((cakes)=>{this.cakes=cakes}).catch((e)=>{this.httpError=true});
   }
 
   cakeEntered(cakeEntered: Cake) {

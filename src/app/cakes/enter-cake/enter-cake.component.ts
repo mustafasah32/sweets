@@ -13,15 +13,10 @@ import { ICake } from '../icake';
 export class EnterCakeComponent implements OnInit {
 
   loading: boolean = false;
-
   showEnterCake: boolean = false;
-
   cake: Cake = new Cake();
-
-
   cakeNameInUse = false;
-
-
+  httpError:boolean=false;
 
   @Output()
   entered = new EventEmitter<Cake>();
@@ -31,17 +26,17 @@ export class EnterCakeComponent implements OnInit {
 
   showDialog() {
     this.cakeNameInUse = false;
+    this.httpError=false;
     this.cake.imageUrl = "cake.jpg";
     this.showEnterCake = true;
   }
 
   async enterCake(): Promise<void> {
+    this.httpError=false;
     this.loading = true;
-
     this.cakeNameInUse = false;
 
     this.cakesService.enterCake(this.cake).then((id) => {
-
       if (id != "-1") {
         this.cake.id = id;
         this.entered.next(this.cake);
@@ -50,6 +45,9 @@ export class EnterCakeComponent implements OnInit {
         this.cakeNameInUse = true;
       }
       this.loading = false;
+    }).catch((e)=>{
+      this.loading=false;
+      this.httpError=true;
     });
   }
 

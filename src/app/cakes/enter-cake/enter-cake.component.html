@@ -77,6 +77,9 @@
           [loading]="loading"
         ></button>
       </div>
+      <small *ngIf="httpError" class="p-error"
+        >Proxy error.</small
+      >
       <small *ngIf="cakeNameInUse" class="p-error"
         >This cake name is used.</small
       >
