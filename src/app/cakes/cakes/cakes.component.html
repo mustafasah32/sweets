@@ -6,27 +6,16 @@
     [loading]="cakes.length === 0"
   >
     <ng-template let-cake pTemplate="listItem">
-      <app-cake [cake]="cake" (displayCake)="showDialog(cake)"></app-cake>
+      <app-cake
+        [cake]="cake"
+        (displayCake)="showCake.showDialog(cake)"
+      ></app-cake>
     </ng-template>
     <ng-template let-cake pTemplate="gridItem"> </ng-template>
   </p-dataView>
 </div>
 
-<small *ngIf="httpError" class="p-error"
-  >Proxy error.</small
->
+<small *ngIf="httpError" class="p-error">Proxy error.</small>
 
 <app-enter-cake (entered)="cakeEntered($event)"></app-enter-cake>
-
-<p-dialog
-  *ngIf="cakeToDisplay"
-  [header]="cakeToDisplay.name"
-  [(visible)]="showCake"
-  [modal]="true"
-  [style]="{ width: '300px' }"
-  [baseZIndex]="10000"
-  [draggable]="false"
-  [resizable]="false"
->
-  <app-show-cake [cake]="cakeToDisplay"></app-show-cake>
-</p-dialog>
+<app-show-cake #showCake></app-show-cake>

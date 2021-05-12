@@ -4,6 +4,7 @@ import { CakesService } from '../cakes-service/cakes-http.service';
 import { CakesMenuService } from '../cakes-service/cakes-menu.service';
 import { EnterCakeComponent } from '../enter-cake/enter-cake.component';
 import { Cake } from '../cake';
+import { ShowCakeComponent } from '../show-cake/show-cake.component';
 
 @Component({
   selector: 'app-cakes',
@@ -13,12 +14,10 @@ import { Cake } from '../cake';
 export class CakesComponent implements OnInit {
 
   cakes: ICake[] = [];
-  showCake: boolean = false;
-  cakeToDisplay!: ICake;
   httpError:boolean=false;
 
   @ViewChild(EnterCakeComponent, { static: true })
-  insertCakeComponent!: EnterCakeComponent;
+  enterCakeComponent!: EnterCakeComponent;
 
   constructor(
     private cakesService: CakesService,
@@ -26,7 +25,7 @@ export class CakesComponent implements OnInit {
 
   async ngOnInit(): Promise<void> {
     this.cakesMenuService.showEnterCake$.subscribe(() => {
-      this.insertCakeComponent.showDialog();
+      this.enterCakeComponent.showDialog();
 
     })
     this.cakesService.getCakes().then((cakes)=>{this.cakes=cakes}).catch((e)=>{this.httpError=true});
@@ -47,10 +46,4 @@ export class CakesComponent implements OnInit {
       this.cakes = cakesSaved;
     }, 500)
   }
-
-  showDialog(cake: ICake) {
-    this.cakeToDisplay = cake;
-    this.showCake = true;
-  }
-
 }

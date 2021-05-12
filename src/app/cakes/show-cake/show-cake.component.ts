@@ -8,12 +8,18 @@ import { ICake } from '../icake';
 })
 export class ShowCakeComponent implements OnInit {
 
-  @Input()
   cake!: ICake;
+
+  showCake: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  showDialog(cake: ICake) {
+    this.cake=cake;
+    this.showCake = true;
   }
 
 }

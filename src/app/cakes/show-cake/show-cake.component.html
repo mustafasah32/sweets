@@ -1,11 +1,24 @@
-<div class="cake" *ngIf="cake">
-  <div class="cake-top">
-    <img [src]="cake.imageUrl">
+<p-dialog
+  [header]="cake.name"
+  [(visible)]="showCake"
+  [modal]="true"
+  [style]="{ width: '300px' }"
+  [baseZIndex]="10000"
+  [draggable]="false"
+  [resizable]="false"
+  *ngIf="cake"
+  ><div class="cake" *ngIf="cake">
+    <div class="cake-top">
+      <img [src]="cake.imageUrl" />
+    </div>
+    <div class="cake-content">
+      <div class="cake-comment">{{ cake.comment }}</div>
+      <p-rating
+        [ngModel]="cake.yumFactor"
+        [readonly]="true"
+        [cancel]="false"
+      ></p-rating>
+    </div>
+    <div class="cake-bottom"></div>
   </div>
-  <div class="cake-content">
-      <div class="cake-comment">{{cake.comment}}</div>
-      <p-rating [ngModel]="cake.yumFactor" [readonly]="true" [cancel]="false"></p-rating>
-  </div>
-  <div class="cake-bottom">
-  </div>
-</div>
+</p-dialog>
