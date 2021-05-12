@@ -31,7 +31,7 @@ export class EnterCakeComponent implements OnInit {
 
   showDialog() {
     this.cakeNameInUse = false;
-    this.cake.imageUrl="cake.jpg";
+    this.cake.imageUrl = "cake.jpg";
     this.showEnterCake = true;
   }
 
@@ -39,13 +39,18 @@ export class EnterCakeComponent implements OnInit {
     this.loading = true;
 
     this.cakeNameInUse = false;
-    if (await this.cakesService.enterCake(this.cake)) {
-      this.entered.next(this.cake);
-      this.showEnterCake=false;
-    } else {
-      this.cakeNameInUse = true;
-    }
-    this.loading = false;
+
+    this.cakesService.enterCake(this.cake).then((id) => {
+
+      if (id != "-1") {
+        this.cake.id = id;
+        this.entered.next(this.cake);
+        this.showEnterCake = false;
+      } else {
+        this.cakeNameInUse = true;
+      }
+      this.loading = false;
+    });
   }
 
   ngOnInit(): void {

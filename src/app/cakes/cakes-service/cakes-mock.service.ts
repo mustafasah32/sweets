@@ -29,11 +29,14 @@ export class CakesMockService implements ICakesService {
     });
   }
 
-  async enterCake(cake: Cake): Promise<boolean> {
-    return new Promise<boolean>((rs, rj) => {
+  async enterCake(cake: Cake): Promise<string> {
+    return new Promise<string>((rs, rj) => {
       setTimeout(() => {
-        const entered = this.cakes.every(d => d.name !== cake.name);
-        rs(entered);
+        let id = "-1";
+        if(this.cakes.every(d => d.name !== cake.name)){
+          id=this.cakes.length.toString();
+        }
+        rs(id);
       }, 3000)
     });
   }

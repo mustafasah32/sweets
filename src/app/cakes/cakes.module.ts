@@ -32,7 +32,7 @@ import { CakesMenuService } from './cakes-service/cakes-menu.service';
     CakeComponent
   ],
   providers: [
-    { provide: CakesService, useClass: CakesMockService }],
+    { provide: CakesService, useClass: CakesService }],
   imports: [
     RatingModule,
     DataViewModule,
